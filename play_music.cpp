@@ -18,11 +18,18 @@ PlayMusic::PlayMusic()
     skin = "music.htm";
     
     bool found_something = false;
+    bool done_something = false;
+
+    outfile = CONFIG.load_config_entry( name, "outfile", "/dev/null" );
+
+    VOUT(0)( "outfile=%s\n", outfile );
     
     for( cgicc::const_form_iterator it = SETUP.cgi->getElements().begin();
             it != SETUP.cgi->getElements().end();
             it++ )
     {
+        done_something = true;
+        
         VOUT(0)( "%s=%s\n", it->getName(), it->getValue() );                
         
         std::string start_command = CONFIG.load_config_entry(it->getName(), "start_command");
@@ -30,18 +37,18 @@ PlayMusic::PlayMusic()
         std::string check_command = CONFIG.load_config_entry(it->getName(), "check_command");
         
         if( start_command.empty() &&
-                stop_command.empty() &&
-                check_command.empty())
+            stop_command.empty() &&
+            check_command.empty())
         {                    
                     continue;
-        }       
+        }                       
         
         stop_or_play( start_command, stop_command, check_command );
         
         found_something = true;
     }        
     
-    if (!found_something )
+    if (!found_something && done_something )
     {
         warning( "no commands found in ini section" );
     }
@@ -123,14 +130,9 @@ void PlayMusic::fork_and_exec( const std::string & command )
             argv_array[i] = strdup(sl[i].c_str());
         
         
-        freopen( "/dev/null", "a+", stdout );
-        freopen( "/dev/null", "a+", stderr );
+        freopen( outfile.c_str(), "a+", stdout );
+        freopen( outfile.c_str(), "a+", stderr );
 
-        /*
-        freopen( "/tmp/exec.out", "a+", stdout );
-        freopen( "/tmp/exec.out", "a+", stderr );
-        */
-        
         if( execv( sl[0].c_str(), &argv_array[0] ) == -1 )
         {
             VOUT(0)(format("error: %s", strerror(errno)));

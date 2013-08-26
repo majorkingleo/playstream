@@ -14,6 +14,8 @@ class PlayMusic : public Page
 {
  private:
 
+    std::string outfile;	 
+
  public:
     PlayMusic();
 

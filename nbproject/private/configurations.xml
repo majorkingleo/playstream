@@ -35,8 +35,6 @@
           <in>zvector.h</in>
         </df>
         <df name="cpputilsterm">
-          <df name="HP-UX">
-          </df>
           <in>cpplist_util.cc</in>
           <in>cpplist_util.h</in>
           <in>listbuffer_utils.cc</in>
