@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+GUI=0
+WIN32=0
+INTERIX=0
+
+export CXXFLAGS="${CXXFLAGS} -pthread"
+export LDFLAGS="$LDFLAGS -lcgicc"
+
+if [ $# -gt 0 ] ; then
+  if [ $1 = "-g" ] ; then
+    export NOOPT=1 
+    export CXXFLAGS="$CXXFLAGS -g -Wall -Woverloaded-virtual -Wshadow -DENABLE_DEBUG"
+  fi
+
+  if [ $1 = "-gui" ] ; then
+	GUI=1;
+	if [ $# -gt "1" ] ; then
+		if [ $2 = "-win32" ] ; then
+			export WIN32=1
+		fi
+	fi
+  fi
+
+  if [ $# -gt "1" ] ; then
+  if [ $2 = "-gui" ] ; then
+	GUI=1;
+	if [ $# -gt "2" ] ; then
+		if [ $3 = "-win32" ] ; then
+			export WIN32=1
+		fi
+	fi
+  fi
+  fi
+fi
+
+if [ `uname` = "Interix" ] ; then
+	INTERIX=1
+fi	
+
+
+if [ $GUI = "1" ] ; then
+	export CXXFLAGS="$CXXFLAGS -DUSE_GUI -DUSE_THREADS -DTOOLS_USE_GUI `pkg-config fox17 --cflags` -pthread"
+	export LDFLAGS="$LDFLAGS `pkg-config fox17 --libs` $CXXFLAGS"
+fi
+
+if [ $INTERIX = "1" ] ; then
+	export CXXFLAGS="$CXXFLAGS"
+	export LDFLAGS="$LDFLAGS -subsys windows"
+fi
+
+
+LIBS=". tools cpputils/cpputilsshared"
+export LDFLAGS=${LDFLAGS}
+export WIN32
+export INTERIX=${INTERIX}
+./genmak tools "$LIBS"
+./genmak cpputils/cpputilsshared "$LIBS"
+./genmak . "$LIBS"

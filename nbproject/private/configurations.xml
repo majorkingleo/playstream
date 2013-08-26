@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="89">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="playstream">
+      <df name="cpputils">
+        <df name="cpputilsshared">
+          <in>backtrace.cc</in>
+          <in>backtrace.h</in>
+          <in>blockupdate.cc</in>
+          <in>blockupdate.h</in>
+          <in>cpp_util.cc</in>
+          <in>cpp_util.h</in>
+          <in>cpp_utils.h</in>
+          <in>cppdir.cc</in>
+          <in>cppdir.h</in>
+          <in>cpputils.h</in>
+          <in>format.cc</in>
+          <in>format.h</in>
+          <in>iterator.h</in>
+          <in>jvector.h</in>
+          <in>leoini.cc</in>
+          <in>leoini.h</in>
+          <in>logtool2.cc</in>
+          <in>logtool2.h</in>
+          <in>map_utils.h</in>
+          <in>range.h</in>
+          <in>ref.h</in>
+          <in>report_exception.h</in>
+          <in>string_utils.cc</in>
+          <in>string_utils.h</in>
+          <in>vec_utils.cc</in>
+          <in>vec_utils.h</in>
+          <in>xml.cc</in>
+          <in>xml.h</in>
+          <in>zvector.h</in>
+        </df>
+        <df name="cpputilsterm">
+          <df name="HP-UX">
+          </df>
+          <in>cpplist_util.cc</in>
+          <in>cpplist_util.h</in>
+          <in>listbuffer_utils.cc</in>
+          <in>listbuffer_utils.h</in>
+        </df>
+        <df name="dummy">
+        </df>
+        <df name="genformat">
+        </df>
+      </df>
+      <df name="skins">
+      </df>
+      <df name="tools">
+        <in>arg.cpp</in>
+        <in>arg.h</in>
+        <in>database.cpp</in>
+        <in>database.h</in>
+        <in>db.cpp</in>
+        <in>db.h</in>
+        <in>dbi.cpp</in>
+        <in>dbi.h</in>
+        <in>debug.cpp</in>
+        <in>debug.h</in>
+        <in>mysql_db.cpp</in>
+        <in>mysql_db.h</in>
+        <in>odbc_db.cpp</in>
+        <in>odbc_db.h</in>
+        <in>oracle_db.cpp</in>
+        <in>oracle_db.h</in>
+        <in>pairs.cpp</in>
+        <in>pairs.h</in>
+        <in>range.h</in>
+        <in>theme.cpp</in>
+        <in>theme.h</in>
+        <in>thread.cpp</in>
+        <in>thread.h</in>
+      </df>
+      <in>binddesc.cpp</in>
+      <in>local_debug.cpp</in>
+      <in>local_debug.h</in>
+      <in>main.cpp</in>
+      <in>page.cpp</in>
+      <in>page.h</in>
+      <in>page_default.cpp</in>
+      <in>page_default.h</in>
+      <in>pages.cpp</in>
+      <in>pages.h</in>
+      <in>play_music.cpp</in>
+      <in>play_music.h</in>
+      <in>session.cpp</in>
+      <in>setup.cpp</in>
+      <in>setup.h</in>
+      <in>structs.cpp</in>
+      <in>tables.cpp</in>
+      <in>tools_config.h</in>
+      <in>util.cpp</in>
+      <in>util.h</in>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

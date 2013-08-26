@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="89">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="playstream">
+      <df name="cpputils">
+        <df name="cpputilsshared">
+          <in>backtrace.cc</in>
+          <in>backtrace.h</in>
+          <in>blockupdate.cc</in>
+          <in>cpp_util.cc</in>
+          <in>cpp_util.h</in>
+          <in>cppdir.cc</in>
+          <in>cppdir.h</in>
+          <in>format.cc</in>
+          <in>format.h</in>
+          <in>jvector.h</in>
+          <in>leoini.cc</in>
+          <in>leoini.h</in>
+          <in>logtool2.cc</in>
+          <in>logtool2.h</in>
+          <in>range.h</in>
+          <in>ref.h</in>
+          <in>report_exception.h</in>
+          <in>string_utils.cc</in>
+          <in>string_utils.h</in>
+          <in>vec_utils.cc</in>
+          <in>vec_utils.h</in>
+          <in>xml.cc</in>
+          <in>xml.h</in>
+          <in>zvector.h</in>
+        </df>
+        <df name="cpputilsterm">
+          <in>cpplist_util.cc</in>
+          <in>cpplist_util.h</in>
+          <in>listbuffer_utils.cc</in>
+          <in>listbuffer_utils.h</in>
+        </df>
+      </df>
+      <df name="tools">
+        <in>arg.cpp</in>
+        <in>arg.h</in>
+        <in>database.cpp</in>
+        <in>database.h</in>
+        <in>db.cpp</in>
+        <in>db.h</in>
+        <in>dbi.cpp</in>
+        <in>dbi.h</in>
+        <in>debug.cpp</in>
+        <in>debug.h</in>
+        <in>mysql_db.cpp</in>
+        <in>mysql_db.h</in>
+        <in>odbc_db.cpp</in>
+        <in>odbc_db.h</in>
+        <in>oracle_db.cpp</in>
+        <in>oracle_db.h</in>
+        <in>pairs.cpp</in>
+        <in>pairs.h</in>
+        <in>range.h</in>
+        <in>theme.cpp</in>
+        <in>theme.h</in>
+        <in>thread.cpp</in>
+        <in>thread.h</in>
+      </df>
+      <in>binddesc.cpp</in>
+      <in>local_debug.cpp</in>
+      <in>local_debug.h</in>
+      <in>main.cpp</in>
+      <in>page.cpp</in>
+      <in>page.h</in>
+      <in>page_default.cpp</in>
+      <in>page_default.h</in>
+      <in>pages.cpp</in>
+      <in>pages.h</in>
+      <in>play_music.cpp</in>
+      <in>play_music.h</in>
+      <in>session.cpp</in>
+      <in>setup.cpp</in>
+      <in>setup.h</in>
+      <in>structs.cpp</in>
+      <in>tables.cpp</in>
+      <in>tools_config.h</in>
+      <in>util.cpp</in>
+      <in>util.h</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile -j6</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile oclean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+      </makefileType>
+      <item path="binddesc.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/backtrace.cc"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/backtrace.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/blockupdate.cc"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/cpp_util.cc"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/cpp_util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/cppdir.cc" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/cppdir.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/format.cc" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/format.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/jvector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/leoini.cc" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/leoini.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/logtool2.cc"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/logtool2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/range.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/ref.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/report_exception.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/string_utils.cc"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/string_utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/vec_utils.cc"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/vec_utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/xml.cc" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsshared/xml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsshared/zvector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsterm/cpplist_util.cc"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsterm/cpplist_util.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="cpputils/cpputilsterm/listbuffer_utils.cc"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="cpputils/cpputilsterm/listbuffer_utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <folder path="playstream/cpputils">
+        <ccTool>
+          <incDir>
+            <pElem>/usr/include</pElem>
+            <pElem>/usr/c++/4.7</pElem>
+            <pElem>.</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+            <pElem>tools</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="playstream/cpputils/cpputilsshared">
+        <ccTool>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </folder>
+      <folder path="playstream/tools">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </folder>
+      <item path="local_debug.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="local_debug.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="page.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="page.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="page_default.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="page_default.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="pages.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="pages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="play_music.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="play_music.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="session.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="setup.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="structs.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="tables.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="tools/arg.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/arg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/database.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/database.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/db.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/db.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/dbi.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/dbi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/debug.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/debug.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/mysql_db.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/mysql_db.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/odbc_db.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/odbc_db.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/oracle_db.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/oracle_db.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/pairs.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/pairs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/range.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/theme.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/theme.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools/thread.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="tools/thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tools_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="util.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>tools</pElem>
+            <pElem>cpputils/cpputilsshared</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>LINUX</Elem>
+            <Elem>NOWAMAS</Elem>
+            <Elem>VERSION="0.1"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="util.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

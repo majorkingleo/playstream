@@ -1,0 +1,43 @@
+EXE=playstream$(EXTENSION)
+PACKAGE=playstream
+DIST=$(PACKAGE)-$(VERSION)
+
+all: $(EXE)
+
+tools/libtools.a:
+	cd tools && gmake
+
+cpputils/cpputilsshared/libcpputilsshared.a:
+	cd cpputils/cpputilsshared && gmake
+
+$(EXE): $(OFILES) tools/libtools.a cpputils/cpputilsshared/libcpputilsshared.a
+	$(CXX) -o $(EXE) $(CXXFLAGS) $(OFILES) $(LDFLAGS)  tools/libtools.a cpputils/cpputilsshared/libcpputilsshared.a
+
+clean_tools:
+	cd tools && gmake clean
+	 cd cpputils/cpputilsshared && gmake clean
+
+
+dist: clean clean_tools
+	rm -rf $(DIST)
+	rm -f $(DIST).tar.gz
+	mkdir $(DIST)
+	cp -r tools $(DIST)
+	cp -r cpputils $(DIST)
+	cp $(CFILES) $(HFILES) COPYING genmak configure Makefile.in $(DIST)
+	find $(DIST) -name "CVS" | xargs rm -rf
+	find $(DIST) -name ".svn" | xargs rm -rf
+	chmod -R u+w  $(DIST)
+	tar cvf $(DIST).tar $(DIST)
+	gzip --best $(DIST).tar
+	mv $(DIST).tar.gz ..
+	rm -rf $(DIST)
+
+sexe: 
+	strip $(EXE)
+	if test -f libFOX-1.7.a ; then \
+		gzip libFOX-1.7.a ; \
+	fi
+
+oclean: clean_tools sexe
+	 $(RM) core $(OFILES) 
