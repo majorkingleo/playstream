@@ -41,14 +41,6 @@ public:
     }
 };
 
-#if 0
-template<typename T> VarIO & operator<<( VarIO &io, const T & sout )
-{
-    if( io.out )
-	*io.out << sout;
-    return io;
-}
-#endif
 
 using namespace std;
 using namespace Tools;
@@ -91,17 +83,6 @@ int main( int argc, char **argv )
     }
 
     int load_count = 1;
-
-    /*
-    std::string s;
-
-    while( getline( std::cin, s ) )
-      {
-	VOUT(0)( "%s\n", s );
-      }
-
-	return 0;
-    */
 
 	cgicc::Cgicc cgi;
 	VarIO IO( &cout );

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=0.1
+VERSION=1
 BASE=`pwd`
 
 if [ $# -gt 1 ] ; then
