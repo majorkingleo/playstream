@@ -78,9 +78,8 @@ bool PlayMusic::stop_or_play( const std::string & start_command, const std::stri
                               const std::string & check_command, const std::string & modul )
 {
     std::string check = exec_command( check_command, true );
-    
-    // if( !check.empty() )
-        exec_command( stop_command, true );
+        
+    exec_command( stop_command, true );
     
     fork_and_exec( start_command, modul );
     
