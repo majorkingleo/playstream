@@ -7,22 +7,22 @@
 #include "setup.h"
 #include <cgicc/Cgicc.h>
 #include "util.h"
-#include <errno.h>
-#include <string.h>
-#include <unistd.h>
+#include <xml.h>
+
+using namespace Tools;
+
 
 PlayMusic::PlayMusic()
-    : Page( "play_music" )     
+    : Page( "play_music" ),
+      PageCommon( "play_music" ),      
+      read_mixer_command(),
+      mixer_channel()
 {
     prefix = "page_music_";
     skin = "music.htm";
     
     bool found_something = false;
     bool done_something = false;
-
-    outfile = CONFIG.load_config_entry( name, "outfile", "/dev/null" );
-
-    VOUT(0)( "outfile=%s\n", outfile );
     
     for( cgicc::const_form_iterator it = SETUP.cgi->getElements().begin();
             it != SETUP.cgi->getElements().end();
@@ -43,100 +43,145 @@ PlayMusic::PlayMusic()
                     continue;
         }                       
         
-        stop_or_play( start_command, stop_command, check_command );
+        stop_or_play( start_command, stop_command, check_command, it->getName() );
         
         found_something = true;
-    }        
+    }               
+    
+    read_mixer_command = CONFIG.load_config_entry("mixer", "read_command" );            
+    mixer_channel = CONFIG.load_config_entry("mixer", "channel" );     
+    
     
     if (!found_something && done_something )
     {
-        warning( "no commands found in ini section" );
+        VOUT(0)( "no commands found in ini section" );
     }
 }
 
 std::string PlayMusic::display()
 {
+    read_outfile();
+    
     std::string ret = header() + load_skin( skin );
 
+    std::string mixer = read_mixer( read_mixer_command );
+    
+    ret = substitude(ret, "MIXER", mixer );
+    ret = substitude(ret, "CURRENT_SONG", current_playing_song );
+    ret = substitude(ret, "CURRENT_MODUL", current_playing_modul );
+    
     return ret;
 }
 
 
-bool PlayMusic::stop_or_play( const std::string & start_command, const std::string & stop_command, const std::string & check_command )
+bool PlayMusic::stop_or_play( const std::string & start_command, const std::string & stop_command, 
+                              const std::string & check_command, const std::string & modul )
 {
-    std::string check = exec_command( check_command );
+    std::string check = exec_command( check_command, true );
     
     // if( !check.empty() )
-        exec_command( stop_command );
+        exec_command( stop_command, true );
     
-    fork_and_exec( start_command );
+    fork_and_exec( start_command, modul );
     
     return true; 
 }
 
-std::string PlayMusic::exec_command( const std::string & command )
-{
-    VOUT(0)( "exec: %s", command );
+
+
+std::string PlayMusic::read_mixer( const std::string & read_command )
+{        
+    std::string ret = exec_command( read_command );         
     
-    FILE *file = popen( command.c_str(), "r");
+    std::vector<std::string> sl = split_simple( ret, "\n" );
     
-    if( !file )
-    {
-        warning( format("cannot execute command: '%s' error: %s", command, strerror(errno)) );
-        return "";
-    }
-    
-    char acBuffer[1024];
-    acBuffer[0]='\0';
+    std::string channel;
+    std::string level;        
     
     std::string res;
     
-    while( !feof(file) )
+    for( unsigned i = 0; i < sl.size(); i++ )
     {
-        size_t nbytes = fread( acBuffer, sizeof(acBuffer)-1, 1, file );
+        const std::string & line = sl[i];
         
-        if( nbytes > 0 )
+        if( line.find( "control") != std::string::npos )
         {
-            acBuffer[nbytes] = '\0';
+            std::string::size_type start = line.find('\'');
+            std::string::size_type end = line.rfind('\'');
+            
+            if( start != std::string::npos && 
+                end != std::string::npos )
+            {
+                channel = line.substr( start+1, end - start - 1);
+                level.clear();
+            }
+        }
+        
+        if( line.find("Playback" ) != std::string::npos )
+        {
+            std::string::size_type start = line.find('[');
+            std::string::size_type end = line.find('%', start);
+            
+            if( start != std::string::npos && 
+                end != std::string::npos )
+            {
+                level = line.substr( start+1, end - start - 1);                
                 
-            res += acBuffer;
+                if( channel == mixer_channel )
+                {
+                    return level;
+                }
+                else
+                {
+                        res = format("%s=%s ", channel, level);                
+                }
+            }
         }
     }
     
-    VOUT(0)( res );
+    if( res.empty() ) {
+        if( sl.size() > 0 ) {
+            res =strip(sl[0]);
+        } else {
+           res = strip(ret);
+        }
+    }
     
-    int ret = pclose( file );
-    
-    /*
-    if( ret != 0 ) {
-        warning( format("return value of command '%s' was '%d'", command, ret) );
-    }*/
-    
-    return res;
+    return res;    
 }
 
-void PlayMusic::fork_and_exec( const std::string & command )
+
+void PlayMusic::read_outfile()
 {
-    std::vector<std::string> sl = split_and_strip_simple(command);   
+    read_outfile( outfile, current_playing_song, current_playing_modul);
+}
+
+void PlayMusic::read_outfile( const std::string & outfile, std::string & current_song, std::string & current_modul )
+{
+    std::string data;
     
-    if( fork() == 0 )
-{
-        std::vector<char*> argv_array;
-
-        argv_array.resize(sl.size() + 1);
-        argv_array[sl.size()] = 0;
-
-        for (unsigned i = 0; i < sl.size(); i++)
-            argv_array[i] = strdup(sl[i].c_str());
-        
-        
-        freopen( outfile.c_str(), "a+", stdout );
-        freopen( outfile.c_str(), "a+", stderr );
-
-        if( execv( sl[0].c_str(), &argv_array[0] ) == -1 )
-        {
-            VOUT(0)(format("error: %s", strerror(errno)));
-            exit(1);
-        }               
+    if( !XML::read_file( outfile, data ) ) {
+        VOUT(0)("Cannot read " + outfile + "\n");
+        return;
+    }
+    
+    std::vector<std::string> sl = split_simple( data, "\n");
+    
+    if( sl.empty() ) {
+        VOUT(0)("sl is empty\n");
+        return;
+    }
+    
+    current_modul = sl[0];
+    
+    std::string line = *sl.rbegin();
+    
+    VOUT(0)("last line: %s\n", line);
+    
+    std::string::size_type start = line.find('\'');
+    std::string::size_type end = line.rfind('\'');
+    
+    if( start != std::string::npos && end != std::string::npos ) {
+        current_song = line.substr( start+1, end - start - 1);
     }
 }

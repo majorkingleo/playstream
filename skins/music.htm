@@ -1,17 +1,102 @@
 TEMPLATE_PAGE
 
 <form method="post" action="playstream?page=play_music">
-    <button style="width: 200px" name="lounge_fm">Loung FM</button><br/><br/>
     
-    <button style="width: 200px" name="soundportal">Soundportal</button><br/><br/>
+    <div id="current_song" style="text-align: center; font-size: 200%;">CURRENT_SONG</div><br/>
+    <div id="current_modul" style="text-align: center; font-size: 100%;">CURRENT_MODUL</div><br/>
     
-    <button style="width: 200px" name="superfly">Superfly</button><br/><br/>
+    <button class="button" style="width: 100%; font-size: 400%;" name="lounge_fm">Loung FM</button><br/><br/>
+    
+    <button class="button" style="width: 100%; font-size: 400%;" name="soundportal">Soundportal</button><br/><br/>
+    
+    <button class="button" style="width: 100%; font-size: 400%;" name="superfly">Superfly</button><br/><br/>
+    <br/><br/>
+
+    <button class="button" style="width: 100%; font-size: 400%;" name="stop">Stop</button><br/><br/>
         
+    <br/><br/>
+    <!--
+    <div id="slider"></div>
+    -->
+    <center>
+    <span class="vol">Vol:</span> <input id="spinner" value="MIXER" style="font-size: 400%; width: 200px;"/>
+    <button class="button" style="width: 20%; font-size: 400%;" id="vinc"/>+</button>
+    <button class="button" style="width: 20%; font-size: 400%;" id="vdec"/>-</button>
+    </center>
+    <span id="error"></span>        
+    
 </form>
 
 <script>
+    
+    function volume_changed( val )
+    {
+        $("#error").load("playstream", 
+                  { page: "set_volume",
+                    value: val + "%"} );              
+    }
+    
+    function update_song_info()
+    {
+        $("#current_song").load("playstream",
+            { page: "current_song", value: "song" });
+
+        $("#current_modul").load("playstream",
+            { page: "current_song", value: "modul" });        
+        
+        setTimeout(update_song_info, 10000);
+    }
+    
     $(document).ready(function(){
-       $("button").button();                
+       $("button").button();         
+       $("#spinner").spinner({ 
+           min: 0, 
+           max: 100, 
+           value: MIXER,
+           change: function( event, ui ) {
+               $("#error").load("playstream", 
+                  { page: "set_volume",
+                    value: ui.value + "%"} );
+              }
+            } );
+            
+        $("#vdec").click(function(){               
+            
+           var val =  $("#spinner").val() - 10;
+            
+           if( val < 0 ) 
+               val = 0;
+            
+           $("#spinner").val( val );    
+           volume_changed( val );
+           return false;
+        });
+        
+        $("#vinc").click(function(){               
+            
+           var val =  parseInt($("#spinner").val()) + 10;                        
+            
+           if( val > 100 ) 
+               val = 100;
+            
+           $("#spinner").val( val );    
+           volume_changed( val );
+           return false;
+        });              
+       /*
+       $("#slider").slider( { 
+           min: 0, 
+           max: 100, 
+           value: MIXER,
+           change: function( event, ui ) {
+               $("#error").load("playstream", 
+                  { page: "set_volume",
+                    value: ui.value + "%"} );
+              }
+            } );
+       */
+      
+      setTimeout(update_song_info, 10000);
     });           
 </script>
 

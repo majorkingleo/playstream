@@ -78,6 +78,8 @@
       <in>main.cpp</in>
       <in>page.cpp</in>
       <in>page.h</in>
+      <in>page_common.cpp</in>
+      <in>page_common.h</in>
       <in>page_default.cpp</in>
       <in>page_default.h</in>
       <in>pages.cpp</in>
@@ -85,8 +87,12 @@
       <in>play_music.cpp</in>
       <in>play_music.h</in>
       <in>session.cpp</in>
+      <in>set_volume.cpp</in>
+      <in>set_volume.h</in>
       <in>setup.cpp</in>
       <in>setup.h</in>
+      <in>song_info.cpp</in>
+      <in>song_info.h</in>
       <in>structs.cpp</in>
       <in>tables.cpp</in>
       <in>tools_config.h</in>

@@ -106,7 +106,7 @@ int main( int argc, char **argv )
 	cgicc::Cgicc cgi;
 	VarIO IO( &cout );
 
-	VOUT(0)( cgi.getEnvironment().getPostData() );
+	VOUT(0)( cgi.getEnvironment().getPostData() + "\n" );
 
 	SETUP.cache_config = CONFIG.cache_config;
 	SETUP.touch_file = CONFIG.touch_file;

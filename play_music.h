@@ -8,14 +8,17 @@
 #ifndef PLAY_MUSIC_H
 #define	PLAY_MUSIC_H
 
-#include "page.h"
+#include "page_common.h"
 
-class PlayMusic : public Page
+class PlayMusic : public Page , PageCommon
 {
  private:
-
-    std::string outfile;	 
-
+    
+    std::string read_mixer_command;
+    std::string mixer_channel;
+    std::string current_playing_modul;
+    std::string current_playing_song;
+    
  public:
     PlayMusic();
 
@@ -23,11 +26,18 @@ class PlayMusic : public Page
     
  private:
         
-    bool stop_or_play( const std::string & start_command, const std::string & stop_command, const std::string & check_command );
+    bool stop_or_play( const std::string & start_command, const std::string & stop_command, 
+                       const std::string & check_command, const std::string & modul );
         
-    std::string exec_command( const std::string & command );
-    void fork_and_exec( const std::string & command );
 
+    std::string read_mixer( const std::string & read_command );
+    
+    void read_outfile();
+    
+  public:
+    static void read_outfile( const std::string & outfile, std::string & current_song, std::string & current_modul );
+    
+    
 };
 
 #endif	/* PLAY_MUSIC_H */
