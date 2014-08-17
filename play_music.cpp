@@ -78,8 +78,9 @@ bool PlayMusic::stop_or_play( const std::string & start_command, const std::stri
                               const std::string & check_command, const std::string & modul )
 {
     std::string check = exec_command( check_command, true );
-        
-    exec_command( stop_command, true );
+    
+    // if( !check.empty() )
+        exec_command( stop_command, true );
     
     fork_and_exec( start_command, modul );
     
@@ -178,7 +179,7 @@ void PlayMusic::read_outfile( const std::string & outfile, std::string & current
     VOUT(0)("last line: %s\n", line);
     
     std::string::size_type start = line.find('\'');
-    std::string::size_type end = line.rfind('\'');
+    std::string::size_type end = line.find('\'', start+1);
     
     if( start != std::string::npos && end != std::string::npos ) {
         current_song = line.substr( start+1, end - start - 1);

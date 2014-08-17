@@ -8,6 +8,13 @@
         <activeConfIndexElem>0</activeConfIndexElem>
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/martin/programs/playstream/local_debug.cpp</file>
+        <file>file:/home/martin/programs/playstream/genmak</file>
+        <file>file:/home/martin/programs/playstream/main.cpp</file>
+        <file>file:/home/martin/programs/playstream/page_default.cpp</file>
+        <file>file:/home/martin/programs/playstream/play_music.cpp</file>
+    </open-files>
     <preferences xmlns="http://www.netbeans.org/ns/auxiliary-configuration-preferences/1">
         <module name="org-netbeans-modules-cnd-discovery">
             <property name="rootFolder" value="/home/martin/programs/playstream"/>
